@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservar cita</title>
+
+  <link rel="stylesheet" href="../../../public/index.css">
+  <link rel="stylesheet" href="reservar.css">
+</head>
+
+<body>
+
+<section class="reservar-layout">
+
+  <!-- RESUMEN -->
+  <div class="resumen">
+    <h2>Tu cita</h2>
+
+    <div class="card resumen-card">
+      <p><strong>Cliente:</strong> <span id="cliente"></span></p>
+      <p><strong>Servicio:</strong> <span id="servicio"></span></p>
+      <p><strong>Precio:</strong> $<span id="precio"></span></p>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="formulario">
+
+    <div class="form-group">
+      <label>Fecha</label>
+      <input type="date" id="fecha">
+    </div>
+
+    <div class="form-group">
+      <label>Hora</label>
+
+      <div class="horas" id="horas">
+        <button type="button">09:00 AM</button>
+        <button type="button">09:30 AM</button>
+        <button type="button">10:00 AM</button>
+        <button type="button">10:30 AM</button>
+        <button type="button">11:00 AM</button>
+        <button type="button">12:00 PM</button>
+        <button type="button">12:30 PM</button>
+        <button type="button">1:00 PM</button>
+        <button type="button">1:30 PM</button>
+        <button type="button">2:00 PM</button>
+        <button type="button">2:30 PM</button>
+        <button type="button">3:00 PM</button>
+        <button type="button">3:30 PM</button>
+        <button type="button">4:00 PM</button>
+        <button type="button">4:30 PM</button>
+        <button type="button">5:00 PM</button>
+        <button type="button">5:30 PM</button>
+        <button type="button">6:00 PM</button>
+        <button type="button">6:30 PM</button>
+        <button type="button">7:00 PM</button>
+        <button type="button">7:30 PM</button>
+        <button type="button">8:00 PM</button>
+        <button type="button">8:30 PM</button>
+        <button type="button">9:00 PM</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- BOTÓN -->
+  <div class="footer-action">
+    <button id="confirmar" disabled>Confirmar cita</button>
+  </div>
+
+</section>
+
+<script>
+
+
+// ================= DATOS =================
+const cliente = JSON.parse(localStorage.getItem("cliente"));
+const servicio = JSON.parse(localStorage.getItem("servicio"));
+
+// seguridad mínima
+if (!cliente || !servicio) {
+  window.location.href = "../home/home.html";
+}
+
+// ================= MAPA DE PRECIOS =================
+const precios = {
+    "Corte de cabello": 17000,
+    "Corte + Cejas": 20000,
+    "Corte + Barba": 22000,
+    "Corte + Barba + Cejas": 27000
+};
+
+// ================= RESUMEN =================
+document.getElementById("cliente").innerText =
+  cliente.nombre + " " + cliente.apellido;
+
+document.getElementById("servicio").innerText =
+  servicio.nombre;
+
+// 🔥 precio SIEMPRE correcto
+const precio = precios[servicio.nombre] || 0;
+
+document.getElementById("precio").innerText = precio;
+
+
+// ================= SELECCIÓN =================
+let horaSeleccionada = null;
+
+const botonesHora = document.querySelectorAll(".horas button");
+const btnConfirmar = document.getElementById("confirmar");
+const inputFecha = document.getElementById("fecha");
+
+// seleccionar hora
+botonesHora.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    botonesHora.forEach(b => b.classList.remove("activo"));
+    btn.classList.add("activo");
+
+    horaSeleccionada = btn.innerText;
+
+    validar();
+  });
+});
+
+// validar
+function validar() {
+  const fecha = inputFecha.value;
+
+  if (fecha && horaSeleccionada) {
+    btnConfirmar.disabled = false;
+  } else {
+    btnConfirmar.disabled = true;
+  }
+}
+
+// fecha change
+inputFecha.addEventListener("change", validar);
+
+
+// ================= CONFIRMAR =================
+btnConfirmar.addEventListener("click", () => {
+
+  const fecha = inputFecha.value;
+
+  let citas = JSON.parse(localStorage.getItem("citas")) || [];
+
+  // validar doble reserva
+  const ocupado = citas.find(c =>
+    c.fecha === fecha && c.hora === horaSeleccionada
+  );
+
+  if (ocupado) {
+    alert("Ese horario ya está ocupado");
+    return;
+  }
+
+  const nuevaCita = {
+    id: Date.now(),
+    cliente,
+    servicio: {
+      ...servicio,
+      precio: precio 
+    },
+    fecha,
+    hora: horaSeleccionada,
+    estado: "Pendiente"
+  };
+
+  citas.push(nuevaCita);
+  localStorage.setItem("citas", JSON.stringify(citas));
+
+  // WhatsApp
+  const mensaje = `Hola, quiero confirmar mi cita:\n\nCliente: ${cliente.nombre} ${cliente.apellido}\nServicio: ${servicio.nombre}\nPrecio: $${precio}\nFecha: ${fecha}\nHora: ${horaSeleccionada}`;
+
+  const url = `https://wa.me/+573152119923?text=${encodeURIComponent(mensaje)}`;
+
+  window.location.href = url;
+
+});
+
+</script>
+
+</body>
+</html>

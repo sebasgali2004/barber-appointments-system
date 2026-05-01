@@ -1,0 +1,93 @@
+/* ================= BASE ================= */
+.reservar-layout {
+  min-height: 100vh;
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+/* ================= RESUMEN ================= */
+.resumen {
+  margin-bottom: 20px;
+}
+
+.resumen h2 {
+  margin-bottom: 10px;
+}
+
+.resumen-card p {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+/* ================= FORM ================= */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* INPUT */
+input {
+  height: 50px;
+  font-size: 16px;
+}
+
+/* ================= HORAS ================= */
+.horas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.horas button {
+  height: 45px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+}
+
+.horas button.activo {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  border: none;
+}
+
+/* ================= BOTÓN FIJO ================= */
+.footer-action {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  padding: 15px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.footer-action button {
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+}
+
+/* DESHABILITADO */
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ================= DESKTOP ================= */
+@media (min-width: 900px) {
+
+  .reservar-layout {
+    max-width: 600px;
+    margin: auto;
+  }
+
+}

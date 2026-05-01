@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Admin</title>
+
+  <link rel="stylesheet" href="../../../public/index.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+<section class="admin-layout">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Panel de citas</h1>
+    <p class="muted">Gestión de reservas</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+
+    <div class="card stat">
+      <p>Hoy</p>
+      <h2 id="hoy">0</h2>
+    </div>
+
+    <div class="card stat">
+      <p>Confirmadas</p>
+      <h2 id="confirmadas">0</h2>
+    </div>
+
+    <div class="card stat">
+      <p>Pendientes</p>
+      <h2 id="pendientes">0</h2>
+    </div>
+
+    <div class="card stat">
+      <p>Ingresos</p>
+      <h2>$<span id="ingresos">0</span></h2>
+    </div>
+
+  </div>
+
+  <!-- LISTA -->
+  <div class="lista">
+
+    <h2>Próximas citas</h2>
+
+    <div id="citas"></div>
+
+  </div>
+
+</section>
+
+<script>
+
+// ================= DATA =================
+let citas = JSON.parse(localStorage.getItem("citas")) || [];
+
+// ================= STATS =================
+const hoyFecha = new Date().toISOString().split("T")[0];
+
+let hoy = 0;
+let confirmadas = 0;
+let pendientes = 0;
+let ingresos = 0;
+
+citas.forEach(c => {
+  if (c.fecha === hoyFecha) hoy++;
+  if (c.estado === "Confirmada") confirmadas++;
+  if (c.estado === "Pendiente") pendientes++;
+
+  ingresos += Number(c.servicio.precio);
+});
+
+document.getElementById("hoy").innerText = hoy;
+document.getElementById("confirmadas").innerText = confirmadas;
+document.getElementById("pendientes").innerText = pendientes;
+document.getElementById("ingresos").innerText = ingresos;
+
+
+// ================= LISTA =================
+const contenedor = document.getElementById("citas");
+
+function render() {
+  contenedor.innerHTML = "";
+
+  if (citas.length === 0) {
+    contenedor.innerHTML = "<p class='muted'>No hay citas</p>";
+    return;
+  }
+
+  citas.forEach((cita, index) => {
+
+    const div = document.createElement("div");
+    div.className = "card cita";
+
+    div.innerHTML = `
+      <div class="info">
+        <h3>${cita.cliente.nombre} ${cita.cliente.apellido}</h3>
+        <p>${cita.servicio.nombre}</p>
+        <p>${cita.fecha} - ${cita.hora}</p>
+      </div>
+
+      <div class="acciones">
+        <span class="estado ${cita.estado.toLowerCase()}">${cita.estado}</span>
+
+        <button onclick="confirmar(${index})">✔</button>
+        <button onclick="cancelar(${index})">✖</button>
+      </div>
+    `;
+
+    contenedor.appendChild(div);
+  });
+
+  localStorage.setItem("citas", JSON.stringify(citas));
+}
+
+// ================= ACCIONES =================
+window.confirmar = function(i) {
+  citas[i].estado = "Confirmada";
+  render();
+};
+
+window.cancelar = function(i) {
+  citas[i].estado = "Cancelada";
+  render();
+};
+
+// init
+render();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+/* ================= BASE ================= */
+.admin-layout {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ================= HEADER ================= */
+.header h1 {
+  font-size: 1.8rem;
+}
+
+.header p {
+  margin-top: 5px;
+}
+
+/* ================= STATS ================= */
+.stats {
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat h2 {
+  margin-top: 5px;
+  color: var(--accent1);
+}
+
+/* ================= LISTA ================= */
+.lista {
+  margin-top: 30px;
+}
+
+.lista h2 {
+  margin-bottom: 15px;
+}
+
+/* ITEM */
+.cita {
+  margin-bottom: 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* INFO */
+.info h3 {
+  font-size: 1rem;
+}
+
+.info p {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ACCIONES */
+.acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.acciones button {
+  width: 35px;
+  height: 35px;
+  font-size: 14px;
+}
+
+/* ESTADOS */
+.estado {
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+}
+
+.confirmada {
+  background: green;
+}
+
+.pendiente {
+  background: orange;
+}
+
+.cancelada {
+  background: red;
+}
+
+/* ================= DESKTOP ================= */
+@media (min-width: 900px) {
+
+  .admin-layout {
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
