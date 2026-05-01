@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Inicio de sesión sistema de citas.">
+        <link rel="stylesheet" href="./login.css">
+        <title>Iniciar Sesión</title>
+    </head>
+
+    <body>
+
+        <main class="login-cont">   <!-- se le agrega class para estilos-->
+
+        <form class="form-cont">
+
+            <img src="../../assets/Perso.png" alt="Logo" class="logo">
+            <h1>Reserva tu cita en segundos</h1>
+            <p>No necesitas crear una cuenta</p>
+
+            <div class="field">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" placeholder="Ingresa tu nombre" required>
+            </div>
+
+            <div class="field">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required>
+            </div>
+
+            <div class="field">
+                <label for="numero">Número de teléfono</label>
+                <input type="tel" id="numero" name="numero" placeholder="📞 3156789087" required>
+            </div>
+
+            <button type="submit">Continuar</button>
+
+            <p>Tus datos solo se usan para tu reserva.</p>
+        </form>
+
+    </main>
+    </body>
+    
+</html>
