@@ -3,13 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barbería</title>
-  <link rel="stylesheet" href="index.css">
-
-  <script>
-    // Redirección automática al Home
-    window.location.href = "./frontend/src/pages/home/home.html";
-  </script>
+  <link rel="icon" href="./frontend/assets/barberia.png" type="image/png">
+  <link rel="shortcut icon" href="./frontend/assets/barberia.png" type="image/png">
+  <title>Barbería | Reserva tu cita en línea</title>
+  <link rel="stylesheet" href="./frontend/css/home.css">
 </head>
+<body>
+  <header class="navbar">
+    <div class="cont-nav">
+      <div class="logo-barber">Barbería ✂</div>
+      <a href="./frontend/pages/login.html">
+      <button class="button-nav">Reservar cita</button>
+      </a>
+    </div>  
+  </header>
+  <main>
+    
+    <section class="cont-first">
 
+    <div class="container-first">
+
+      <h1>Tu estilo,<span class="destacado">nuestra prioridad</span></h1>
+      <p>Reserva tu cita en segundos y disfruta de un servicio profesional de barbería</p>
+      <a href="./frontend/pages/login.html"><button type="submit">Reserva tu cita ahora</button></a>
+
+    </div>
+
+    <div class="cont-img">
+      <img src="./frontend/assets/fondo-barberia.jpeg" alt="Imagen de barbería" class="img-barber">
+    </div>
+
+    </section>
+
+    <section class="cont-second">
+
+      <div class="container-second">
+
+      <h2>Nuestros servicios</h2>
+      <p>Ofrecemos una variedad de servicios para que luzcas siempre impecable.</p>
+
+      <div class="services">
+
+        <div class="service-card card1">
+          <h3>Corte de cabello</h3>
+        </div>
+
+        <div class="service-card card2">
+          <h3>Corte de cabello + Cejas</h3>
+        </div>
+
+        <div class="service-card card3">
+          <h3>Corte de cabello + Barba</h3>
+        </div>
+
+        <div class="service-card card4">
+          <h3>Arreglo de barba</h3>
+        </div>
+
+        <div class="service-card card5">
+          <h3>Combo Completo</h3>
+        </div>
+
+      </div>
+
+      </div>
+
+    </section>
+
+  </main>
+  <footer class="site-footer" aria-label="Pie de página">
+    <div class="footer-container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+        <h3 class="footer-brand-name">Barbería ✂</h3>
+        <p class="footer-brand-desc">Tu barbería de confianza para lucir genial.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Enlaces Rápidos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Sobre Nosotros</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Ayuda</h4>
+            <ul class="footer-links">
+              <li><a href="#">Centro de Ayuda</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+         <h4 class="footer-col-title">Contacto</h4>
+          <ul class="footer-links footer-contact">
+            <li><i class="bi bi-telephone"></i> +57 1 2342 5678</li>
+            <li><i class="bi bi-envelope"></i> 
+            <a href="#">
+              [email protected]
+            </a>
+            </li>
+            <li><i class="bi bi-geo-alt"></i> Tuluá, Colombia</li>
+          </ul>
+        </div>
+
+      </div>
+      
+      <div class="footer-bottom">
+       <p>&copy; 2026 Barbería ✂. Todos los datos reservados.</p>
+      </div>
+
+    </div>
+  </footer>
+</body>
 </html>

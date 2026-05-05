@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reservar cita</title>
 
-  <link rel="stylesheet" href="../../../public/index.css">
-  <link rel="stylesheet" href="reservar.css">
+  <link rel="stylesheet" href="../public/index.css">
+  <link rel="stylesheet" href="../css/reservar.css">
 </head>
 
 <body>
@@ -82,7 +82,7 @@ const servicio = JSON.parse(localStorage.getItem("servicio"));
 
 // seguridad mínima
 if (!cliente || !servicio) {
-  window.location.href = "../home/home.html";
+  window.location.href = "../../index.html";
 }
 
 // ================= MAPA DE PRECIOS =================

@@ -218,24 +218,25 @@ body {
   transform: scale(1.08);
 }
 
+
 .card1 {
-  background-image: url("../../assets/corte-cabello.jpg");
+  background-image: url("../assets/corte-cabello.jpg");
 }
 
 .card2 {
-  background-image: url("../../assets/corte-cejas.jpg");
+  background-image: url("../assets/corte-cejas.jpg");
 }
 
 .card3 {
-  background-image: url("../../assets/corte-barba.jpg");
+  background-image: url("../assets/corte-barba.jpg");
 }
 
 .card4 {
-  background-image: url("../../assets/barba.jpg");
+  background-image: url("../assets/barba.jpg");
 }
 
 .card5 {
-  background-image: url("../../assets/combo-completo.jpg");
+  background-image: url("../assets/combo-completo.jpg");
 }
 
 /* ================= FOOTER ================= */
