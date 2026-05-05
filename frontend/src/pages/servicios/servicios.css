@@ -1,109 +1,53 @@
-/* ================= BASE ================= */
-.servicios-layout {
-  min-height: 100vh;
-  padding: 20px;
-  padding-bottom: 100px; /* espacio para botón fijo */
+body {
+  background-color: #0f1115; /* color de fondo*/
+  color: white; /* color del texto*/
+  font-family: Arial, sans-serif; /* fuente del texto*/
 }
 
-/* ================= HEADER ================= */
-.header h1 {
-  font-size: 1.8rem;
+.b-user {
+  color: #ff8c00; /* color del texto del botón de usuario */
 }
 
-.header p {
-  margin-top: 5px;
+.services {
+  display: flex; /* para mostrar las tarjetas de servicio en fila */
+  justify-content: center; /* para centrar las tarjetas de servicio horizontalmente */
+  flex-wrap: wrap; /* para permitir que las tarjetas de servicio se ajusten a la pantalla */
+  gap: 10px; /* espacio entre las tarjetas de servicio */
 }
 
-/* ================= LISTA (VERTICAL) ================= */
-.lista-servicios {
-  margin-top: 30px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.service-card {
+  background-color:#2a2d35; /* color de fondo de los campos  */
+  border: 1px solid #333333; /* borde de los campos */
+  border-radius: 20px; /* bordes redondeados para los campos */
+  width: 300px; /* ancho del contenedor */
+  padding: 20px; /* espacio interno del contenedor */
+  margin: 10px; /* espacio entre los contenedores */
 }
 
-/* ================= ITEM ================= */
-.servicio {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-
-  padding: 18px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  cursor: pointer;
-  transition: var(--transition);
-
-  min-height: 70px; /* tamaño táctil */
+.service-card:hover {
+  border-color:#ff8c00; /* color del borde al pasar el mouse por encima de la tarjeta de servicio */
+  cursor: pointer; /* cursor en forma de mano al pasar sobre la tarjeta de servicio */
 }
 
-/* TEXTO */
-.servicio h3 {
-  font-size: 1rem;
+.btn {
+  color: #ff8c00; /* color del texto del botón */
 }
 
-.servicio .muted {
-  font-size: 0.85rem;
+.service-card:hover h2 {
+    color: #ff8c00; /* cambia el color del h2 al pasar el mouse */
 }
 
-/* PRECIO */
-.precio {
-  font-size: 1.3rem;
-  color: var(--accent1);
-  font-weight: bold;
+.section p {
+  color: #aaaaaa;
 }
 
-/* ================= ESTADO ACTIVO ================= */
-.servicio.activo {
-  border: 2px solid var(--accent1);
-  box-shadow: 0 0 20px rgba(255,122,0,0.35);
-  transform: scale(1.02);
+.section h1 {
+    margin-bottom: -5px; /* espacio inferior del título */
+    text-align: center; /* centrado del texto */
+    color: #ffffff; /* color del texto */
+
 }
 
-/* ================= DESTACADO ================= */
-.destacado {
-  border: 1px solid var(--accent1);
-}
-
-/* ================= BOTÓN FIJO ================= */
-.footer-action {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-
-  padding: 15px;
-
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-}
-
-.footer-action button {
-  width: 100%;
-  height: 50px;
-  font-size: 16px;
-}
-
-/* DESHABILITADO */
-button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-/* ================= DESKTOP (MEJORA) ================= */
-@media (min-width: 900px) {
-
-  .servicios-layout {
-    padding: 40px;
-  }
-
-  .lista-servicios {
-    max-width: 600px;
-    margin: 40px auto;
-  }
-
+.servis {
+    text-align: center; /* centrado del texto */
 }
