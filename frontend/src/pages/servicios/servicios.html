@@ -1,106 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servicios</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Servicios del sistema de citas.">
+        <link rel="icon" href="../../assets/barberia.png" type="image/png">
+        <link rel="shortcut icon" href="../../assets/barberia.png" type="image/png">
+        <link rel="stylesheet" href="./servicios.css">
+        <title>Servicios</title>
+    </head>
 
-  <link rel="stylesheet" href="../../../public/index.css">
-  <link rel="stylesheet" href="servicios.css">
-</head>
+    <body>
+      <main>
+         <section class="section">
+          <h1>Bienvenido,<span class="b-user"> Usuario</span></h1>
+          <p class="servis">Selecciona el servicio que deseas</p>
 
-<body>
+          <div class="services">
+            <div class="service-card">
+              <h2>Corte de cabello</h2>
+              <p>Corte moderno y personalizado segun tu estilo.</p>
+              <span class="btn">✓ Seleccionar</span>
+            </div>
 
-<section class="servicios-layout">
+            <div class="service-card">
+              <h2>Corte de cabello + Cejas</h2>
+              <p>Afeitado tradicional con navaja para un acabado suave.</p>
+              <span class="btn">✓ Seleccionar</span>
+            </div>
 
-  <!-- HEADER -->
-  <div class="header">
-    <h1>Elige tu servicio</h1>
-    <h3>Recuerda estar 10 min antes de tu cita</h3>
-    <p class="muted">Selecciona una opción</p>
+            <div class="service-card">
+              <h2>Corte de cabello + Barba</h2>
+              <p>Afeitado tradicional con navaja para un acabado suave.</p>
+              <span class="btn">✓ Seleccionar</span>
+            </div>
 
-  </div>
+            <div class="service-card">
+              <h2>Arreglo de barba</h2>
+              <p>Perfilado y estilizado profesional de tu barba.</p>
+              <span class="btn">✓ Seleccionar</span>
+            </div>
 
-  <!-- LISTA DE SERVICIOS -->
-  <div class="lista-servicios">
-
-    <div class="servicio" data-id="corte" data-precio="15">
-      <div class="info">
-        <h3>Corte de cabello</h3>
-      </div>
-      <div class="precio">$17.000</div>
-    </div>
-
-   <div class="servicio" data-id="corte" data-precio="15">
-      <div class="info">
-        <h3>Corte + Cejas</h3>
-      </div>
-      <div class="precio">$20.000</div>
-    </div>
-
-    <div class="servicio" data-id="barba" data-precio="10">
-      <div class="info">
-        <h3>Corte + Barba</h3>
-      </div>
-      <div class="precio">$22.000</div>
-    </div>
-
-    <div class="servicio destacado" data-id="combo" data-precio="22">
-      <div class="info">
-        <h3>Corte + Barba + Cejas</h3>
-      </div>
-      <div class="precio">$27.000</div>
-    </div>
-
-  </div>
-
-  <!-- BOTÓN FIJO -->
-  <div class="footer-action">
-    <button id="continuar" disabled>Continuar</button>
-  </div>
-
-</section>
-
-<script>
-
-// Estado
-let servicioSeleccionado = null;
-
-const items = document.querySelectorAll(".servicio");
-const btn = document.getElementById("continuar");
-
-// Selección
-items.forEach(item => {
-  item.addEventListener("click", () => {
-
-    // limpiar selección previa
-    items.forEach(i => i.classList.remove("activo"));
-
-    // marcar activo
-    item.classList.add("activo");
-
-    // guardar selección
-    servicioSeleccionado = {
-      id: item.dataset.id,
-      precio: item.dataset.precio,
-      nombre: item.querySelector("h3").innerText
-    };
-
-    // activar botón
-    btn.disabled = false;
-  });
-});
-
-// Continuar
-btn.addEventListener("click", () => {
-  if (!servicioSeleccionado) return;
-
-  localStorage.setItem("servicio", JSON.stringify(servicioSeleccionado));
-
-  window.location.href = "../reservar/reservar.html";
-});
-
-</script>
-
-</body>
+            <div class="service-card">
+              <h2>Combo completo</h2>
+              <p>Corte de cabello + Barba + Cejas.</p>
+              <span class="btn">✓ Seleccionar</span>
+            </div>
+          </div>
+         </section>
+      </main>
+    </body>
 </html>
