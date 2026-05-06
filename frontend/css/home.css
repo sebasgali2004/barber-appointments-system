@@ -30,14 +30,6 @@ body {
   margin: 0 auto;
 }
 
-/* 🔥 CAMBIO #1 */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 15px; /* espacio entre texto y botón si quieres */
-  font-size: 20px;
-  font-weight: bold;
-}
 
 .logo-barber {
   color: white;
@@ -220,23 +212,23 @@ body {
 
 
 .card1 {
-  background-image: url("../assets/corte-cabello.jpg");
+  background-image: url("../assets/images/corte-cabello.jpg");
 }
 
 .card2 {
-  background-image: url("../assets/corte-cejas.jpg");
+  background-image: url("../assets/images/corte-cejas.jpg");
 }
 
 .card3 {
-  background-image: url("../assets/corte-barba.jpg");
+  background-image: url("../assets/images/corte-barba.jpg");
 }
 
 .card4 {
-  background-image: url("../assets/barba.jpg");
+  background-image: url("../assets/images/barba.jpg");
 }
 
 .card5 {
-  background-image: url("../assets/combo-completo.jpg");
+  background-image: url("../assets/images/combo-completo.jpg");
 }
 
 /* ================= FOOTER ================= */
