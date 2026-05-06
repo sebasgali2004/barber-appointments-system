@@ -20,7 +20,7 @@ form.addEventListener("submit", (e) => { /* Se agrega un evento de escucha al fo
         return; /* Se detiene la ejecución del código. */
     }
 
-    window.location.href = "servicios.html"; /* Si todos los campos están completos y el número de teléfono tiene exactamente 10 dígitos, se redirige al usuario a la página de servicios. */
+    window.location.href = "services.html"; /* Si todos los campos están completos y el número de teléfono tiene exactamente 10 dígitos, se redirige al usuario a la página de servicios. */
 });
 
 nombre.addEventListener("input", () => { /* Se agrega un evento de escucha al campo de nombre para detectar cuando el usuario ingresa texto. */

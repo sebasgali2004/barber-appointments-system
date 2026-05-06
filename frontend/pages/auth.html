@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inicio de sesión sistema de citas.">
+    <link rel="icon" href="../assets/barberia.png" type="image/png">
+    <link rel="shortcut icon" href="../assets/barberia.png" type="image/png">
+    <link rel="stylesheet" href="../css/auth.css">
+    <title>Iniciar Sesión</title>
+  </head>
+
+  <body>
+    <main class="login-cont">
+      <form class="form-cont" id="form">
+        <img src="../assets/images/perso.png" alt="Logo" class="logo">
+        <h1>Reserva tu cita en minutos</h1>
+        <p>No necesitas crear una cuenta</p>
+
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required minlength="2" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" placeholder="Ingresa tu nombre">
+        </div>
+
+        <div class="field">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" name="apellido" required minlength="2" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" placeholder="Ingresa tu apellido">
+        </div>
+
+        <div class="field">
+          <label for="telefono">Número de teléfono</label>
+          <input type="tel" id="telefono" name="telefono" required minlength="10" maxlength="10" pattern="[0-9]{10}" inputmode="numeric" placeholder="📞 3156789087">
+        </div>
+
+        <button type="submit">Continuar</button>
+
+        <p>Tus datos solo se usan para tu reserva.</p>
+      </form>
+    </main>
+
+    <script src="../js/auth.js"></script>
+  </body>
+</html>
