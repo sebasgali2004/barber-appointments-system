@@ -1,7 +1,8 @@
 body {
   background-color: #0f1115; /* color de fondo*/
   color: white; /* color del texto*/
-  font-family: Arial, sans-serif; /* fuente del texto*/
+  font-family: 'Inter', sans-serif; /* fuente del texto*/
+  margin: 0; /* eliminar margen predeterminado */
 }
 
 .b-user {
@@ -16,17 +17,20 @@ body {
 }
 
 .service-card {
+  all: unset; /* eliminar estilos predeterminados del botón */
   background-color:#2a2d35; /* color de fondo de los campos  */
   border: 1px solid #333333; /* borde de los campos */
   border-radius: 20px; /* bordes redondeados para los campos */
-  width: 300px; /* ancho del contenedor */
+  width: 100%; /* ancho del contenedor */
+  max-width: 300px; /* ancho máximo del contenedor */
   padding: 20px; /* espacio interno del contenedor */
-  margin: 10px; /* espacio entre los contenedores */
+  margin: 7px; /* espacio entre los contenedores */
 }
 
 .service-card:hover {
   border-color:#ff8c00; /* color del borde al pasar el mouse por encima de la tarjeta de servicio */
   cursor: pointer; /* cursor en forma de mano al pasar sobre la tarjeta de servicio */
+  transform: translateY(-4px);
 }
 
 .btn {
@@ -51,3 +55,10 @@ body {
 .servis {
     text-align: center; /* centrado del texto */
 }
+
+.section {
+  padding: 20px; /* espacio interno de la sección */
+}
+
+
+
