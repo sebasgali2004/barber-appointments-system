@@ -20,6 +20,8 @@ form.addEventListener("submit", (e) => { /* Se agrega un evento de escucha al fo
         return; /* Se detiene la ejecución del código. */
     }
 
+    localStorage.setItem("nombre", nombreValor); /* Se almacena el valor del campo de nombre en el almacenamiento local del navegador. */
+
     window.location.href = "services.html"; /* Si todos los campos están completos y el número de teléfono tiene exactamente 10 dígitos, se redirige al usuario a la página de servicios. */
 });
 
