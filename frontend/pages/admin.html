@@ -1,139 +1,240 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel Admin</title>
 
-  <link rel="stylesheet" href="../public/index.css">
+  <title>Admin Dashboard</title>
   <link rel="stylesheet" href="../css/admin.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+  
 </head>
 
 <body>
-
-<section class="admin-layout">
-
-  <!-- HEADER -->
-  <div class="header">
-    <h1>Panel de citas</h1>
-    <p class="muted">Gestión de reservas</p>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats">
-
-    <div class="card stat">
-      <p>Hoy</p>
-      <h2 id="hoy">0</h2>
-    </div>
-
-    <div class="card stat">
-      <p>Confirmadas</p>
-      <h2 id="confirmadas">0</h2>
-    </div>
-
-    <div class="card stat">
-      <p>Pendientes</p>
-      <h2 id="pendientes">0</h2>
-    </div>
-
-    <div class="card stat">
-      <p>Ingresos</p>
-      <h2>$<span id="ingresos">0</span></h2>
-    </div>
-
-  </div>
-
-  <!-- LISTA -->
-  <div class="lista">
-
-    <h2>Próximas citas</h2>
-
-    <div id="citas"></div>
-
-  </div>
-
-</section>
-
-<script>
-
-// ================= DATA =================
-let citas = JSON.parse(localStorage.getItem("citas")) || [];
-
-// ================= STATS =================
-const hoyFecha = new Date().toISOString().split("T")[0];
-
-let hoy = 0;
-let confirmadas = 0;
-let pendientes = 0;
-let ingresos = 0;
-
-citas.forEach(c => {
-  if (c.fecha === hoyFecha) hoy++;
-  if (c.estado === "Confirmada") confirmadas++;
-  if (c.estado === "Pendiente") pendientes++;
-
-  ingresos += Number(c.servicio.precio);
-});
-
-document.getElementById("hoy").innerText = hoy;
-document.getElementById("confirmadas").innerText = confirmadas;
-document.getElementById("pendientes").innerText = pendientes;
-document.getElementById("ingresos").innerText = ingresos;
-
-
-// ================= LISTA =================
-const contenedor = document.getElementById("citas");
-
-function render() {
-  contenedor.innerHTML = "";
-
-  if (citas.length === 0) {
-    contenedor.innerHTML = "<p class='muted'>No hay citas</p>";
-    return;
-  }
-
-  citas.forEach((cita, index) => {
-
-    const div = document.createElement("div");
-    div.className = "card cita";
-
-    div.innerHTML = `
-      <div class="info">
-        <h3>${cita.cliente.nombre} ${cita.cliente.apellido}</h3>
-        <p>${cita.servicio.nombre}</p>
-        <p>${cita.fecha} - ${cita.hora}</p>
+  <div class="admin-first">
+    <aside class="admin-barralateral">
+      <div class="admin-logo">
+        Barbería
       </div>
 
-      <div class="acciones">
-        <span class="estado ${cita.estado.toLowerCase()}">${cita.estado}</span>
+      <nav class="admin-menu">
+        
+      </nav>
 
-        <button onclick="confirmar(${index})">✔</button>
-        <button onclick="cancelar(${index})">✖</button>
+
+</html>
+
+
+
+
+<!--
+<body>
+       MENÚ -
+      <nav class="admin-menu">
+
+        <a href="#" class="active">
+          <i class="fa-solid fa-chart-line"></i>
+          Dashboard
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-calendar-days"></i>
+          Citas
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-scissors"></i>
+          Servicios
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-users"></i>
+          Clientes
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-clock"></i>
+          Horarios
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          Cerrar sesión
+        </a>
+
+      </nav>
+
+    </aside>
+
+    -- MAIN --
+    <main class="admin-main">
+
+      - HEADER -
+      <div class="admin-header">
+
+        <div>
+
+          <h1>Dashboard</h1>
+
+          <p>Resumen general del negocio</p>
+
+        </div>
+
+        <button class="admin-btn">
+          Nueva cita
+        </button>
+
       </div>
-    `;
 
-    contenedor.appendChild(div);
-  });
+      - CARDS -
+      <section class="admin-cards">
 
-  localStorage.setItem("citas", JSON.stringify(citas));
-}
+        - CARD -
+        <div class="admin-card">
 
-// ================= ACCIONES =================
-window.confirmar = function(i) {
-  citas[i].estado = "Confirmada";
-  render();
-};
+          <div class="card-icon">
+            <i class="fa-regular fa-calendar"></i>
+          </div>
 
-window.cancelar = function(i) {
-  citas[i].estado = "Cancelada";
-  render();
-};
+          <h2>12</h2>
 
-// init
-render();
+          <p>Citas hoy</p>
 
-</script>
+        </div>
+
+        - CARD -
+        <div class="admin-card">
+
+          <div class="card-icon">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+
+          <h2>8</h2>
+
+          <p>Confirmadas</p>
+
+        </div>
+
+        - CARD -
+        <div class="admin-card">
+
+          <div class="card-icon">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+
+          <h2>4</h2>
+
+          <p>Pendientes</p>
+
+        </div>
+
+        - CARD -
+        <div class="admin-card">
+
+          <div class="card-icon">
+            <i class="fa-solid fa-dollar-sign"></i>
+          </div>
+
+          <h2>$120</h2>
+
+          <p>Ingresos</p>
+
+        </div>
+
+      </section>
+
+      - TABLA -
+      <section class="admin-table-container">
+
+        - HEADER -
+        <div class="table-header">
+
+          <h2>Próximas citas</h2>
+
+        </div>
+
+        - TABLA -
+        <table class="admin-table">
+
+          <thead>
+
+            <tr>
+
+              <th>Cliente</th>
+
+              <th>Servicio</th>
+
+              <th>Hora</th>
+
+              <th>Estado</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+
+              <td>Carlos Martínez</td>
+
+              <td>Corte de cabello</td>
+
+              <td>10:00 AM</td>
+
+              <td>
+                <span class="badge badge-success">
+                  Confirmada
+                </span>
+              </td>
+
+            </tr>
+
+            <tr>
+
+              <td>Juan Pérez</td>
+
+              <td>Barba</td>
+
+              <td>11:30 AM</td>
+
+              <td>
+                <span class="badge badge-warning">
+                  Pendiente
+                </span>
+              </td>
+
+            </tr>
+
+            <tr>
+
+              <td>Miguel Rodríguez</td>
+
+              <td>Combo completo</td>
+
+              <td>02:00 PM</td>
+
+              <td>
+                <span class="badge badge-danger">
+                  Cancelada
+                </span>
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </section>
+
+    </main>
+
+  </div>
 
 </body>
 </html>

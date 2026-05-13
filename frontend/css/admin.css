@@ -1,107 +1,425 @@
-/* ================= BASE ================= */
+/* =========================================================
+   ===================== BODY ===============================
+   ========================================================= */
+
+body {
+  margin: 0; /* elimina espacios externos */
+  font-family: Arial, sans-serif; /* misma fuente del proyecto */
+  background-color: #0f1115; /* fondo principal oscuro */
+  color: white; /* texto blanco */
+  overflow-x: hidden; /* evita scroll horizontal */
+}
+
+
+/* =========================================================
+   ================= LAYOUT ADMIN ==========================
+   ========================================================= */
+
 .admin-layout {
-  min-height: 100vh;
-  padding: 20px;
+  display: flex; /* sidebar + contenido en horizontal */
+  min-height: 100vh; /* ocupa toda la pantalla */
 }
 
-/* ================= HEADER ================= */
-.header h1 {
-  font-size: 1.8rem;
+
+/* =========================================================
+   ===================== SIDEBAR ===========================
+   ========================================================= */
+
+.admin-sidebar {
+  width: 260px; /* ancho del menú lateral */
+  background-color: #16191f; /* fondo sidebar */
+  border-right: 1px solid #242933; /* línea lateral */
+  padding: 30px 20px; /* espacio interno */
+  position: fixed; /* sidebar fija */
+  top: 0;
+  left: 0;
+  bottom: 0;
 }
 
-.header p {
-  margin-top: 5px;
+
+/* logo del admin */
+.admin-logo {
+  font-size: 1.5rem; /* tamaño texto */
+  font-weight: bold; /* negrita */
+  margin-bottom: 50px; /* separación abajo */
+  color: #ff8c00; /* naranja */
 }
 
-/* ================= STATS ================= */
-.stats {
-  margin-top: 20px;
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-.stat {
-  text-align: center;
-}
-
-.stat h2 {
-  margin-top: 5px;
-  color: var(--accent1);
-}
-
-/* ================= LISTA ================= */
-.lista {
-  margin-top: 30px;
-}
-
-.lista h2 {
-  margin-bottom: 15px;
-}
-
-/* ITEM */
-.cita {
-  margin-bottom: 15px;
-
+/* contenedor links sidebar */
+.admin-menu {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column; /* uno debajo del otro */
+  gap: 15px; /* espacio entre botones */
 }
 
-/* INFO */
-.info h3 {
+
+/* links sidebar */
+.admin-menu a {
+  text-decoration: none; /* quita subrayado */
+  color: #c7c7c7; /* gris claro */
+  padding: 14px 16px; /* espacio interno */
+  border-radius: 12px; /* bordes redondos */
+  transition: all 0.3s ease; /* animaciones suaves */
   font-size: 1rem;
 }
 
-.info p {
-  font-size: 0.85rem;
-  color: var(--muted);
+
+/* hover sidebar */
+.admin-menu a:hover {
+  background-color: rgba(255, 140, 0, 0.12); /* fondo naranja suave */
+  color: white; /* texto blanco */
+  transform: translateX(5px); /* pequeño movimiento */
 }
 
-/* ACCIONES */
-.acciones {
+
+/* botón activo */
+.admin-menu .active {
+  background-color: #ff8c00; /* fondo naranja */
+  color: white;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   ================= CONTENIDO PRINCIPAL ===================
+   ========================================================= */
+
+.admin-main {
+  flex: 1; /* ocupa el resto del espacio */
+  margin-left: 260px; /* deja espacio sidebar */
+  padding: 40px; /* espacio interno */
+}
+
+
+/* =========================================================
+   ===================== HEADER =============================
+   ========================================================= */
+
+.admin-header {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 5px;
+  justify-content: space-between; /* texto izquierda / botón derecha */
+  align-items: center;
+  margin-bottom: 40px;
 }
 
-.acciones button {
-  width: 35px;
-  height: 35px;
-  font-size: 14px;
+
+/* título dashboard */
+.admin-header h1 {
+  font-size: 2.2rem;
+  margin: 0;
 }
 
-/* ESTADOS */
-.estado {
-  padding: 4px 8px;
-  border-radius: 10px;
-  font-size: 0.7rem;
+
+/* subtitulo */
+.admin-header p {
+  color: #9ca3af;
+  margin-top: 8px;
 }
 
-.confirmada {
-  background: green;
+
+/* botón principal */
+.admin-btn {
+  background-color: #ff8c00;
+  color: white;
+  border: none;
+  padding: 14px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+
+  transition: all 0.3s ease;
 }
 
-.pendiente {
-  background: orange;
+
+/* hover botón */
+.admin-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(255, 140, 0, 0.25);
 }
 
-.cancelada {
-  background: red;
+
+/* =========================================================
+   ===================== CARDS ==============================
+   ========================================================= */
+
+.admin-cards {
+  display: grid;
+
+  /* responsive automático */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 25px;
+  margin-bottom: 40px;
 }
 
-/* ================= DESKTOP ================= */
-@media (min-width: 900px) {
 
-  .admin-layout {
-    max-width: 900px;
-    margin: auto;
+/* card individual */
+.admin-card {
+  background-color: #16191f;
+  border: 1px solid #242933;
+
+  border-radius: 22px;
+
+  padding: 25px;
+
+  transition: all 0.3s ease;
+}
+
+
+/* hover card */
+.admin-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(255, 140, 0, 0.4);
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+
+/* número card */
+.admin-card h2 {
+  margin: 15px 0 10px;
+  font-size: 2rem;
+}
+
+
+/* texto card */
+.admin-card p {
+  color: #9ca3af;
+  margin: 0;
+}
+
+
+/* iconos cards */
+.card-icon {
+  width: 55px;
+  height: 55px;
+
+  border-radius: 16px;
+
+  background-color: rgba(255, 140, 0, 0.12);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.5rem;
+}
+
+
+/* =========================================================
+   ===================== TABLA ==============================
+   ========================================================= */
+
+.admin-table-container {
+  background-color: #16191f;
+
+  border: 1px solid #242933;
+
+  border-radius: 24px;
+
+  overflow: hidden;
+}
+
+
+/* header tabla */
+.table-header {
+  padding: 25px;
+
+  border-bottom: 1px solid #242933;
+}
+
+
+/* título tabla */
+.table-header h2 {
+  margin: 0;
+}
+
+
+/* tabla */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+/* cabecera tabla */
+.admin-table thead {
+  background-color: #1d2128;
+}
+
+
+/* celdas */
+.admin-table th,
+.admin-table td {
+  padding: 18px 20px;
+  text-align: left;
+}
+
+
+/* títulos columnas */
+.admin-table th {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+
+/* filas */
+.admin-table tbody tr {
+  border-top: 1px solid #242933;
+
+  transition: background 0.3s ease;
+}
+
+
+/* hover filas */
+.admin-table tbody tr:hover {
+  background-color: rgba(255,255,255,0.02);
+}
+
+
+/* =========================================================
+   ===================== BADGES =============================
+   ========================================================= */
+
+.badge {
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+
+  font-weight: bold;
+}
+
+
+/* confirmado */
+.badge-success {
+  background-color: rgba(34,197,94,0.12);
+  color: #22c55e;
+}
+
+
+/* pendiente */
+.badge-warning {
+  background-color: rgba(255,140,0,0.12);
+  color: #ff8c00;
+}
+
+
+/* cancelado */
+.badge-danger {
+  background-color: rgba(239,68,68,0.12);
+  color: #ef4444;
+}
+
+
+/* =========================================================
+   ===================== RESPONSIVE =========================
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  /* sidebar más pequeña */
+  .admin-sidebar {
+    width: 90px;
+    padding: 25px 10px;
   }
 
-  .stats {
-    grid-template-columns: repeat(4, 1fr);
+  /* ocultar texto logo */
+  .admin-logo {
+    font-size: 1rem;
+    text-align: center;
   }
 
+  /* links centrados */
+  .admin-menu a {
+    text-align: center;
+    padding: 14px 10px;
+    font-size: 0.9rem;
+  }
+
+  /* contenido ocupa menos margen */
+  .admin-main {
+    margin-left: 90px;
+    padding: 30px 20px;
+  }
+
+  /* header vertical */
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+
+/* =========================================================
+   ===================== MOVIL ==============================
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  /* sidebar abajo */
+  .admin-sidebar {
+    width: 100%;
+    height: 75px;
+
+    bottom: 0;
+    top: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-right: none;
+    border-top: 1px solid #242933;
+
+    z-index: 999;
+  }
+
+  /* ocultar logo */
+  .admin-logo {
+    display: none;
+  }
+
+  /* menú horizontal */
+  .admin-menu {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  /* links pequeños */
+  .admin-menu a {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  /* contenido completo */
+  .admin-main {
+    margin-left: 0;
+    padding: 25px 18px 100px;
+  }
+
+  /* cards una debajo de otra */
+  .admin-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* tabla responsive */
+  .admin-table-container {
+    overflow-x: auto;
+  }
+
+  /* título más pequeño */
+  .admin-header h1 {
+    font-size: 1.8rem;
+  }
+
+  /* botón ancho completo */
+  .admin-btn {
+    width: 100%;
+  }
 }
