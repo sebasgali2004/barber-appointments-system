@@ -255,34 +255,6 @@ body {
   font-size: 14px;
 }
 
-/* BOTÓN FLOTANTE */
-.fab {
-  width: 55px;
-  height: 55px;
-  border: none;
-  border-radius: 50%;
-  background-color: #ff8c00;
-  color: white;
-  font-size: 24px;
-  font-weight: 300;
-  position: fixed;
-  right: 20px;
-  bottom: 80px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
-  font-family: 'Inter', sans-serif;
-}
-
-.fab:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(255, 140, 0, 0.4);
-}
-
-.fab:active {
-  transform: scale(0.95);
-}
-
 /* MENÚ INFERIOR */
 .bottom-nav {
   height: 65px;
