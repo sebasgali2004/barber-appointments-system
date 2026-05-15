@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel de administración de citas de barbería">
+
+  <!-- FUENTE -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/admin.css">
+
+  <title>Dashboard Admin</title>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="topbar">
+  <h1>Panel de Administración</h1>
+
+  <div class="profile">
+    <button class="profile-btn">
+      <img src="../assets/images/admin.jpg" alt="Administrador">
+    </button>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="container">
+
+  <!-- ================= INICIO ================= -->
+  <section id="content-inicio" class="tab-content active">
+
+    <!-- CARDS -->
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon orange">📅</div>
+        <div class="card-info">
+          <h2>24</h2>
+          <p>Reservas hoy</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon green">💰</div>
+        <div class="card-info">
+          <h2>$420K</h2>
+          <p>Ingresos</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon blue">👥</div>
+        <div class="card-info">
+          <h2>16</h2>
+          <p>Clientes</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CITAS DE HOY -->
+    <section class="today-appointments">
+
+      <div class="section-title">
+        <h2>Citas de hoy</h2>
+        <button>Ver todas</button>
+      </div>
+
+      <div class="appointments">
+
+        <div class="appointment-card">
+          <div class="appointment-top">
+            <div>
+              <h3>Sebastián</h3>
+              <p>Corte clásico</p>
+            </div>
+            <span class="status pending">Pendiente</span>
+          </div>
+          <div class="appointment-bottom">
+            <span>⏰ 10:00 AM</span>
+            <span>👤 Andrés</span>
+          </div>
+        </div>
+
+        <div class="appointment-card">
+          <div class="appointment-top">
+            <div>
+              <h3>Juan</h3>
+              <p>Cejas</p>
+            </div>
+            <span class="status completed">Completada</span>
+          </div>
+          <div class="appointment-bottom">
+            <span>⏰ 11:30 AM</span>
+            <span>👤 Kevin</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </section>
+
+  <!-- ================= RESERVAS ================= -->
+  <section id="content-reservas" class="tab-content">
+
+    <div class="section-title">
+      <h2>Todas las reservas</h2>
+      <button>Filtrar</button>
+    </div>
+
+    <div class="appointments">
+
+      <div class="appointment-card">
+        <div class="appointment-top">
+          <div>
+            <h3>Carlos</h3>
+            <p>Barba</p>
+          </div>
+          <span class="status canceled">Cancelada</span>
+        </div>
+        <div class="appointment-bottom">
+          <span>📅 13 Mayo</span>
+          <span>⏰ 1:00 PM</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= HORARIOS ================= -->
+  <section id="content-horarios" class="tab-content">
+
+    <div class="calendar-block">
+
+      <!-- CALENDARIO -->
+      <div class="calendar-container">
+
+        <div class="calendar-header">
+          <button class="nav-btn">◀</button>
+          <h3>Mayo 2026</h3>
+          <button class="nav-btn">▶</button>
+        </div>
+
+        <div class="weekdays">
+          <div>Lun</div><div>Mar</div><div>Mié</div>
+          <div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+        </div>
+
+        <div class="days-grid">
+          <div class="day">1</div>
+          <div class="day">2</div>
+          <div class="day">3</div>
+          <div class="day today">14</div>
+        </div>
+
+      </div>
+
+      <!-- BLOQUEO -->
+      <div class="block-container">
+
+        <h3>Bloquear horarios</h3>
+
+        <div class="time-slots">
+
+          <label class="time-slot">
+            <input type="checkbox"> 08:00 AM
+          </label>
+
+          <label class="time-slot">
+            <input type="checkbox"> 09:00 AM
+          </label>
+
+          <label class="time-slot">
+            <input type="checkbox"> 10:00 AM
+          </label>
+
+        </div>
+
+        <div class="block-actions">
+          <button class="btn-full-day">Bloquear día</button>
+          <button class="btn-save">Guardar</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= PERFIL ================= -->
+  <section id="content-perfil" class="tab-content">
+
+    <div class="profile-section">
+
+      <div class="profile-card">
+        <h2>Mi perfil</h2>
+
+        <div class="profile-info">
+          <p><strong>Nombre:</strong> Administrador</p>
+          <p><strong>Email:</strong> admin@barberia.com</p>
+          <p><strong>Teléfono:</strong> +57 123 456</p>
+          <p><strong>Local:</strong> Calle 123</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<!-- NAV -->
+<nav class="bottom-nav">
+
+  <button class="nav-btn-item active" data-tab="content-inicio">
+    🏠
+    <span>Inicio</span>
+  </button>
+
+  <button class="nav-btn-item" data-tab="content-reservas">
+    📅
+    <span>Reservas</span>
+  </button>
+
+  <button class="nav-btn-item" data-tab="content-horarios">
+    ⏰
+    <span>Horarios</span>
+  </button>
+
+  <button class="nav-btn-item" data-tab="content-perfil">
+    👤
+    <span>Perfil</span>
+  </button>
+
+</nav>
+
+<!-- JS -->
+<script>
+  const buttons = document.querySelectorAll(".nav-btn-item");
+  const sections = document.querySelectorAll(".tab-content");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+      buttons.forEach(b => b.classList.remove("active"));
+      sections.forEach(s => s.classList.remove("active"));
+
+      btn.classList.add("active");
+      document.getElementById(btn.dataset.tab).classList.add("active");
+
+    });
+  });
+</script>
+
+</body>
+</html>
