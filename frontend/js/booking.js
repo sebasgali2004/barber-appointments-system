@@ -20,6 +20,7 @@ if (selectedServiceElement) {
 let selectedDay = null;
 let selectedHour = null;
 let selectedBarber = null;
+let selectedDate = null;
 
 // Barberos disponibles para que el usuario elija primero
 const availableBarbers = [
@@ -76,6 +77,22 @@ const months = [
   "noviembre",
   "diciembre"
 ];
+
+// Convierte una hora en formato "8:30 AM" a un objeto Date con la misma fecha que baseDate
+function hourStringToDate(baseDate, hourString) {
+  if (!baseDate) return null;
+  const parts = hourString.split(' ');
+  const timePart = parts[0];
+  const meridiem = parts[1] || '';
+  const timeParts = timePart.split(':');
+  let hours = parseInt(timeParts[0], 10);
+  const minutes = parseInt(timeParts[1] || '0', 10);
+
+  if (meridiem.toUpperCase() === 'PM' && hours !== 12) hours += 12;
+  if (meridiem.toUpperCase() === 'AM' && hours === 12) hours = 0;
+
+  return new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate(), hours, minutes, 0, 0);
+}
 
 // Obtenemos la fecha actual
 const today = new Date();
@@ -145,6 +162,7 @@ function renderBarbers() {
       selectedBarber = barber;
       selectedDay = null;
       selectedHour = null;
+      selectedDate = null;
 
       updateSummary();
       renderDays();
@@ -182,12 +200,24 @@ function renderHours() {
     hourButton.classList.add("calendar", "hour-btn");
     hourButton.innerHTML = `<p>${hour}</p>`;
 
-    hourButton.addEventListener("click", () => {
-      clearActiveHours();
-      hourButton.classList.add("active-hour");
-      selectedHour = hour;
-      updateSummary();
-    });
+    // Si la fecha seleccionada es hoy, deshabilitamos las horas que ya pasaron
+    const now = new Date();
+    const isSelectedToday = selectedDate && selectedDate.toDateString() === now.toDateString();
+    const slotDate = hourStringToDate(selectedDate || now, hour);
+
+    if (isSelectedToday && slotDate && slotDate <= now) {
+      hourButton.classList.add('disabled-hour');
+      hourButton.disabled = true;
+      hourButton.title = 'Hora ya pasada';
+    } else {
+      hourButton.addEventListener("click", () => {
+        if (hourButton.disabled) return;
+        clearActiveHours();
+        hourButton.classList.add("active-hour");
+        selectedHour = hour;
+        updateSummary();
+      });
+    }
 
     hoursContainer.appendChild(hourButton);
   });
@@ -237,8 +267,9 @@ function renderDays() {
       clearActiveDays();
       dayButton.classList.add("active-day");
 
-      // Guardamos el día seleccionado en texto simple
+      // Guardamos el día seleccionado en texto simple y en objeto Date para validaciones
       selectedDay = `${isToday ? "hoy" : dayName} ${dayNumber} ${monthName}`;
+      selectedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
       selectedHour = null;
 
       // Al cambiar de día, limpiamos la selección de horas
