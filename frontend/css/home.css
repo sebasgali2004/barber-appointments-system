@@ -75,7 +75,7 @@ body {
   align-items: center;
   padding: 50px 40px;
   gap: 40px;
-  min-height: 85vh; /* 🔥 CAMBIO #2 */
+  min-height: 75vh; /* 🔥 CAMBIO #2 */
 }
 
 .container-first {
@@ -191,14 +191,15 @@ body {
 .service-card h3 {
   position: relative;
   z-index: 2;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   transition: transform 0.3s ease;
+  font-weight: 700;
 }
 
 .service-card p {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: #ff8c00;
-  font-weight: bold;
+  margin-top: 4px;
 }
 
 .service-card:hover {
